@@ -183,7 +183,7 @@ library(lubridate) # done once every new session starts
 
 # You then should be able to load these csv files using the function read.csv. Let's work with the "sample-patient.csv" first:
 
-sample_patient <- read.csv("sample-patient.csv")
+sample_patient <- read.csv("sample-patient.csv", stringsAsFactors = F)
 
 # If your data is available as a plain text file (e.g., .txt), you should use read.table. There are many arguments in read.table, which lets you decide separators (space, tabs, commas), whether data has header or not, etc.
 
