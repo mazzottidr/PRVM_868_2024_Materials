@@ -355,7 +355,6 @@ ggplot(analysis_data_binge_bmi, aes(x = baseline_age, y=baseline_bmi)) +
         facet_wrap(~binge_diag)
 
 
-
 # For the correlations, we might have to create 2 data frames one per group:
 no_binge_df <- analysis_data_binge_bmi %>%
         filter(binge_diag=="No")
@@ -373,8 +372,40 @@ cor.test(yes_binge_df$baseline_age, yes_binge_df$baseline_bmi)
 
 # Linear regression example
 
+# We will use the package jtools that helps interpreting coeficients of logistic regression models
+#install.packages("jtools")
+library(jtools)
+
+# We can use linear regression when we have a continuous outcome and a categorical or continuous predictor/exposure
+# Let's determine the effect of age on BMI
+model1 <- glm(baseline_bmi ~ baseline_age, data = analysis_data_binge_bmi)
+summary(model1)
+summ(model1)
+
+# Let's determine if this association changes after we adjust for sex (e.g., add another term in the regression)
+model2 <- glm(baseline_bmi ~ baseline_age + sex, data = analysis_data_binge_bmi)
+summ(model2)
+
+# What happens if we add binge_diag and race?
+model3 <- glm(baseline_bmi ~ baseline_age + sex + binge_diag + race, data = analysis_data_binge_bmi)
+summ(model3)
+summ(model3, digits = 4)
+
+# Let's now run a model looking at the effect of age on BMI, but separately for each bing eating disorder group, adjusted by covariates
+model4_no_binge <- glm(baseline_bmi ~ baseline_age + sex + race, data = filter(analysis_data_binge_bmi, binge_diag=="No"))
+summ(model4_no_binge, digits = 4)
+
+model4_yes_binge <- glm(baseline_bmi ~ baseline_age + sex + race, data = filter(analysis_data_binge_bmi, binge_diag=="Yes"))
+summ(model4_yes_binge, digits = 4)
+
 
 # Logistic regression example
 
+# We can use logistic regression when we have a binary outcome and a categorical or continuous predictor/exposure
+# Let's determine the effect of BMI on the odds of having a binge eating disoder diagnosis
+model_log1 <- glm(binge_diag ~ baseline_bmi, data = analysis_data_binge_bmi, family = binomial(link = "logit"))
+summ(model_log1, exp = T, digits = 4)
 
-
+# Let's now adjust for other covariates such as age, sex and race
+model_log2 <- glm(binge_diag ~ baseline_bmi + baseline_age + sex, data = analysis_data_binge_bmi, family = binomial(link = "logit"))
+summ(model_log2, exp = T, digits = 4)
