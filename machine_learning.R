@@ -29,7 +29,7 @@ ml_binge_dataset <- analysis_data_binge_bmi %>%
 ml_binge_dataset$binge_diag <- as.factor(ml_binge_dataset$binge_diag)
 ml_binge_dataset$sex <- as.factor(ml_binge_dataset$sex)
 
-# The question we would like to address iss we can develop a prediction model that calculates the probability of someone having a diagnosis of BE disorder given their age, sex and BMI.
+# The question we would like to address is whether we can develop a prediction model that calculates the probability of someone having a diagnosis of BE disorder given their age, sex and BMI.
 
 # We can actually do that with a logistic regression model. Let's run this first:
 fit_reg1<-glm(binge_diag ~ baseline_bmi + baseline_age + sex, data=ml_binge_dataset, family=binomial())
