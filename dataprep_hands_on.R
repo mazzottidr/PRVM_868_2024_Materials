@@ -99,7 +99,7 @@ l2 <- FALSE
 l2 <- F
 
 # QUESTION: how do I compare if l1 is equal to l2?
-l1==l2
+
 
 
 # R Data Structures
@@ -161,7 +161,7 @@ getwd()
 
 ### 2. If you are not where you thought you were, you need to change to a new working directory.
 # You can do this by navigating to the desired directory folder and clicking "More > Set as working directory" or using the function below, providing the full path to your desired folder:
-setwd("/home/droblesmazzotti/")
+setwd("/home/droblesmazzotti/") # Example - please change to the folder you would like to proceed
 
 ### 3. It is a good idea to always create a new folder for each new analysis you are doing, and have all your files (scripts, data) available in that folder
 
@@ -181,7 +181,7 @@ library(lubridate) # done once every new session starts
 # then use the upload button to upload the files "sample-data.csv" and "sample-patient.csv". You can find these files in our shared class folder
 # Next, make sure your you set this folder as your new working directory!
 
-# You then should be able to load these csv files using the function read.csv. Let's work with the "sample-patient.csv" first:
+# You then should be able to load these csv files using the function read.csv. Let's work with the "sample-patient.csv" first. Please upload the file "sample-patient.csv" using the "Upload" button on RStudio
 
 sample_patient <- read.csv("sample-patient.csv", stringsAsFactors = F)
 
