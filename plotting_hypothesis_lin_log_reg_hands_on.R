@@ -180,7 +180,7 @@ full_data_binge_bmi$binge_diag <- as.factor(full_data_binge_bmi$binge_diag)
 # Let's check how many yes and nos we have:
 table(full_data_binge_bmi$binge_diag)
 
-# Now, we need to make sure we have our BMI variable available. We have several BMI variables - median, earliest, latest. Ideally, we would need to collect the BMI at the earliest diagnosis of binge eating (for those with diagnosis) and the latest BMI of those without a diagnosis (reflecting their more recent BMI, assuming they were not diagnosed with Binge Eating Disorder). Please not that this is just one example of design.
+# Now, we need to make sure we have our BMI variable available. We have several BMI variables - median, earliest, latest. Ideally, we would need to collect the BMI at the earliest diagnosis of binge eating (for those with diagnosis) and the latest BMI of those without a diagnosis (reflecting their more recent BMI, assuming they were not diagnosed with Binge Eating Disorder). Please note that this is just one example of design.
 
 # For this, we will need to use our raw data ("sample_data.csv"), that contains dates for all events.
 
